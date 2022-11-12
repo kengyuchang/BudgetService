@@ -25,13 +25,19 @@ class BudgetServiceTest(unittest.TestCase):
         budget_service.get_all = lambda: [Budget("202211",300), Budget("202212", 31)]
         self.assertEqual(budget_service.query('20221231', '20221230'), 0)
 
-    # test3
+    # test3 只有一個月
     def test_OneMonth_end(self):
         budget_service = BudgetService()s
         budget_service.get_all = lambda: [Budget("202211", 300), Budget("202212", 31)]
         self.assertEqual(budget_service.query('20221201', '20221231'), 31)
         print("test3 Ok")
 
+    # test4
+    def test_OneMonth_end(self):
+        budget_service = BudgetService()
+        budget_service.get_all = lambda: [Budget("202211", 300), Budget("202212", 31)]
+        self.assertEqual(budget_service.query('20221201', '20221231'), 31)
+        print("test4 Ok")
 
     # test2 20221101~20221102
     #def test_partial_star_end(self):
